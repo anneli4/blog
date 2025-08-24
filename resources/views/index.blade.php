@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-4xl">Home</h1>
     <div class="text-center my-2">
-        {{$posts->links('partials.simple-pagination')}} {{-- lehekülgede lingid --}}
+        {{$posts->links()}} {{-- lehekülgede lingid --}}
     </div>
     <div class="grid grid-cols-3 gap-4">
         @foreach($posts as $post)
