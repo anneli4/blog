@@ -21,9 +21,13 @@
                     <td>{{ $post->updated_at }}</td>
                     <td>
                         <div class="join">
-                            <a class="btn join-item btn-info">View</a>
-                            <a class="btn join-item btn-warning">Edit</a>
-                            <a class="btn join-item btn-error">Delite</a>
+                            <a href="{{route('posts.show', ['post' => $post])}}" class="btn join-item btn-info">View</a>
+                            <a href="{{route('posts.edit', ['post' => $post])}}" class="btn join-item btn-warning">Edit</a>
+                            <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                            <button class="btn join-item btn-error">Delete</button>
+                            </form>
                         </div>
                     </td>
                 </tr>

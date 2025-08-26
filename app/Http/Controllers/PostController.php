@@ -40,21 +40,19 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-        if($post){
-            return view('posts.show', compact('post'));
-        }
-        throw new NotFoundHttpException('Post not found');
+          return view('posts.show', compact('post'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -62,7 +60,9 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->fill($request->validated());
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -70,6 +70,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }

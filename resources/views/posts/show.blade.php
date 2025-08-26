@@ -3,6 +3,7 @@
 @section('title', __('New Post'))
 
 @section('content')
+<a class="btn btn-primary mt-2" href="{{ url()->previous()}}">Back</a>
 <div class="card bg-base-100 shadow-sm w-1/2 mx-auto">
     <div class="card-body">
         <table class="table table-zebra">
